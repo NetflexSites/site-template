@@ -3,3 +3,5 @@ nbproject
 config/deploy.json
 store/*
 .sass-cache
+vendor
+.env

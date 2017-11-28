@@ -1,0 +1,16 @@
+{
+	"sass":{
+		"minimize":true,
+		"sourcemap":true,
+		"public/assets/package.css": [
+			"assets/sass/bootstrap/_bootstrap.sass"
+		]
+	},
+	"js":{
+		"minimize":true,
+		"sourcemap":true,
+		"public/assets/package.js": [
+			"public/assets/js/bootstrap/*"
+		]
+	}
+}

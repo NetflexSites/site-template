@@ -1,0 +1,13 @@
+{
+    "name": "netflex/site-template",
+    "description": "Netflex Site Template",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:apility/netflex-portable.git"
+        }
+    ],
+    "require": {
+        "netflex/netflex-portable": "dev-master"
+    }
+}
