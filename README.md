@@ -1,24 +1,38 @@
 # Netflex Site Template
 
-The netflex site template contains the folder structure and a sass version of bootstrap v 3.7 with watcher for sass and js pre configured. The site template will update as we update our foundation templates.
+This is a basic project skeleton for Netlfex based sites. It comes preconfigured with webpack for JS and SCSS compilation. It is set up with Bootstrap 4 and JQuery.
 
-## Placement:
+Webpack will compile and autoprefix SCSS files, and compile ES6 JS files to be comaptible with all browsers from IE11 and up.
 
-* public/assets/js - all javascripts for bootstrap
-* public/assets/fonts - glyphicon icons
-* assets/sass - bootstrap sass source
-* config/watch.json - watcher configuration for sass and javascript files
+Webpack also generates source maps automatically.
+
+#### Built assets will always have the name `bundle.js` and `bundle.scss`. This can be changed in the `webpack.config.js` file.
+
+#### If you do change this, please update your `.gitignore` to avoid getting the built assets commited into the repository.
+
+# Paths
+
+* public/assets/js - Compiled JS files
+* public/assets/css - Compiled SCSS files
+* assets/sass - Source SCSS files
+* assets/js - Source JS files
+* config/watch.json - Deprecated. See webpack.config.js instead
 * vendor/ - Composer dependencies
-
-# Contribute
-
-To contribute, please send us a pull request.
 
 # Testing local
 
-Run `composer install` in the root of this project to set up the dev dependencies.
+Run `composer install` and `yarn` (or `npm install`) in the root of this project to set up the dev dependencies.
 
-Create .env file with keys `NF_PUBLIC_KEY` and `NF_PRIVATE_KEY`, or add credentials to `/config/api.json`.
+Create a `.env` file with keys `NF_PUBLIC_KEY` and `NF_PRIVATE_KEY`
+If a `api.json` (deprecated) is detected in the config directory, it will automatically be upgraded to a `.env` file.
+
+To compile assets:
+
+`yarn build` or `npm run build`
+
+To watch assets:
+
+`yarn dev` or `npm run dev`
 
 To run local test server:
 
@@ -26,6 +40,6 @@ To run local test server:
 
 This will serve up the site locally at http://localhost:8080
 
-**IMPOTANT:** 
+# Contribute
 
-Netflex does not support third party Composer dependencies at this time. So do not rely on them for your site.
+To contribute, please send us a pull request.
