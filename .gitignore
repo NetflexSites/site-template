@@ -5,6 +5,7 @@ nbproject
 .DS_Store
 .sass-cache
 node_modules
+config/api.json
 config/deploy.json
 public/assets/js/bundle.js
 public/assets/css/bundle.css
