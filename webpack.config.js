@@ -20,6 +20,15 @@ module.exports = {
   plugins: [
     // Specify the resulting CSS filename
     new ExtractTextPlugin('public/assets/css/bundle.css'),
+    // inject ES5 modules as global vars
+    new webpack.ProvidePlugin(
+      {
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.$': 'jquery',
+        'window.jQuery': 'jquery',
+        Popper: ['popper.js', 'default']
+    }),
   ],
 
   module: {
