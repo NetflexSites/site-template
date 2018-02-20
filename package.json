@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Netflex Site Template",
   "scripts": {
-    "watch": ""
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "dev": "./node_modules/.bin/webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,35 @@
   "bugs": {
     "url": "https://github.com/NetflexSites/site-template/issues"
   },
-  "homepage": "https://github.com/NetflexSites/site-template#readme"
+  "homepage": "https://github.com/NetflexSites/site-template#readme",
+  "devDependencies": {
+    "webpack": "^3.11.0",
+    "stylelint": "^9.0.0",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "css-loader": "^0.28.9",
+    "es6-promise": "^4.2.4",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "autoprefixer": "^8.0.0",
+    "style-loader": "^0.20.2",
+    "postcss-loader": "^2.1.0",
+    "babel-preset-env": "^1.6.1",
+    "webpack-dev-server": "^2.11.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "stylelint-webpack-plugin": "^0.10.2",
+    "stylelint-config-standard": "^18.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "stylelint-selector-bem-pattern": "^2.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
 }
