@@ -1,25 +1,38 @@
-'use strict';
+'use strict'
 
 const path = require('path')
-const glob = require("glob");
+const glob = require('glob')
 const webpack = require('webpack')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-const styleLintPlugin = require('stylelint-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 require('es6-promise').polyfill()
 
-const entry = glob.sync("./assets/js/*.js").concat(glob.sync("./assets/sass/[^_]*.scss"))
+const entry = {}
+const entries = glob.sync('./assets/**/*.js').concat(glob.sync('./assets/**/[^_]*.scss'))
+entries.forEach(e => {
+  entry[path.basename(e).split('.')[0]] = e
+})
+
+console.log(entry);
 
 module.exports = {
   entry,
   output: {
     path: __dirname,
-    filename: 'public/assets/js/bundle.js'
+    filename: 'dist/[name].[hash].js'
   },
 
   plugins: [
+    // Clean dist
+    new CleanWebpackPlugin(['dist']),
+    // Generate manifest.json
+    new ManifestPlugin({
+      fileName: 'dist/manifest.json'
+    }),
     // Specify the resulting CSS filename
-    new ExtractTextPlugin('public/assets/css/bundle.css'),
+    new ExtractTextPlugin('dist/[name].[hash].css'),
     // inject ES5 modules as global vars
     new webpack.ProvidePlugin(
       {
