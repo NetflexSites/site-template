@@ -1,7 +1,12 @@
+.env
+vendor
+store/*
 nbproject
 .DS_Store
-config/deploy.json
-store/*
 .sass-cache
-vendor
-.env
+node_modules
+config/deploy.json
+public/assets/js/bundle.js
+public/assets/css/bundle.css
+public/assets/js/bundle.js.map
+public/assets/css/bundle.css.map
