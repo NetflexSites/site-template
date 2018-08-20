@@ -21,7 +21,7 @@ module.exports = {
   entry,
   output: {
     path: __dirname,
-    filename: 'dist/[name].[hash].js'
+    filename: 'dist/site-template.[hash].js'
   },
 
   plugins: [
@@ -32,7 +32,7 @@ module.exports = {
       fileName: 'dist/manifest.json'
     }),
     // Specify the resulting CSS filename
-    new ExtractTextPlugin('dist/[name].[hash].css'),
+    new ExtractTextPlugin('dist/site-template.[hash].css'),
     // inject ES5 modules as global vars
     new webpack.ProvidePlugin(
       {

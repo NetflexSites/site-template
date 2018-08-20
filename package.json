@@ -1,25 +1,8 @@
 {
-  "name": "netflex-site-template",
-  "version": "1.0.0",
-  "description": "Netflex Site Template",
-  "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.config.js",
-    "dev": "./node_modules/.bin/webpack --config webpack.config.js --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NetflexSites/site-template.git"
-  },
-  "keywords": [
-    "netflex",
-    "template"
-  ],
-  "author": "Apility AS <hei@apility.no>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NetflexSites/site-template/issues"
-  },
-  "homepage": "https://github.com/NetflexSites/site-template#readme",
+  "name": "site-template",
+  "version": "0.0.1",
+  "description": "Site template for Netflex",
+  "author": "Apility AS",
   "devDependencies": {
     "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
