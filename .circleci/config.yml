@@ -1,0 +1,52 @@
+version: 2.1
+
+orbs:
+  netflex: netflex/netflex-deploy@1.0.0
+
+jobs:
+  checkout:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - netflex/pull
+
+  composer:
+    docker:
+      - image: circleci/php:latest
+    steps:
+      - netflex/composer
+
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - netflex/build
+
+  deploy:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - netflex/deploy
+
+workflows:
+   version: 2
+   deployment:
+     jobs:
+        - checkout:
+            filters:
+              branches:
+                only:
+                  - dev
+                  - stage
+                  - master
+        - composer:
+            requires:
+              - checkout
+            context: Apility Github
+        - build:
+            requires:
+              - checkout
+        - deploy:
+            requires:
+              - build
+              - composer

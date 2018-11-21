@@ -1,13 +1,19 @@
 {
-    "name": "netflex/site-template",
-    "description": "Netflex Site Template",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:apility/netflex-portable.git"
-        }
-    ],
-    "require": {
-        "netflex/netflex-portable": "dev-master"
+  "name": "netflexsites/site-template",
+  "type": "project",
+  "license": "UNLICENSED",
+  "require": {
+    "netflex/siteV3": "dev-master",
+    "netflex/library": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:apility/SiteV3.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:apility/PHP-Library.git"
     }
+  ]
 }
