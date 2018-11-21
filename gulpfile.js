@@ -5,6 +5,8 @@ const sass = require('gulp-sass')
 const gutil = require('gulp-util')
 const concat = require('gulp-concat')
 const cleanCSS = require('gulp-clean-css')
+const babel = require('gulp-babel')
+const minify = require('gulp-babel-minify')
 
 let watchConfig = {}
 
@@ -39,6 +41,7 @@ function parseWatchConfig(config, targetFormat) {
   return output
 }
 
+const jsConfig = parseWatchConfig(watchConfig, 'js')
 const scssConfig = parseWatchConfig(watchConfig, 'scss')
 
 gulp.task('scss', callback => {
@@ -70,6 +73,36 @@ gulp.task('scss', callback => {
   callback()
 })
 
+gulp.task('js', callback => {
+  jsConfig.forEach(bundle => {
+    const jsFiles = bundle.entries
+      .map(file => path.resolve(__dirname, file))
+
+    const jsFile = path.resolve(__dirname, bundle.name).split('/')
+    const jsFilename = jsFile.pop()
+    const jsFilePath = jsFile.join('/')
+
+    if (fs.existsSync(jsFile)) {
+      fs.unlinkSync(jsFile)
+    }
+
+    let pipe = gulp.src(jsFiles)
+      .pipe(babel({ presets: ['@babel/env'] }))
+      .pipe(concat(jsFilename))
+
+    if (bundle.options.minify) {
+      pipe = pipe.pipe(minify({
+        mangle: {
+          keepClassName: true
+        }
+      }))
+    }
+
+    pipe.pipe(gulp.dest(jsFilePath))
+  })
+
+  callback()
+})
 
 gulp.task('watch', _ => {
 
@@ -83,5 +116,5 @@ gulp.task('watch', _ => {
   gulp.watch(scssFiles, ['scss'])
 })
 
-gulp.task('default', _ => ['scss']
+gulp.task('default', _ => ['scss', 'js']
   .map(task => gulp.start(task)))
