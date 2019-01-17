@@ -6,6 +6,4 @@ nbproject
 .DS_Store
 .sass-cache
 node_modules
-config/api.json
-public/assets/js/output.js
-public/assets/css/output.css
+config/deploy.json
