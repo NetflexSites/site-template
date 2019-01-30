@@ -58,8 +58,12 @@ workflows:
       - create_site:
           requires:
             - checkout
+          filters:
+            branches:
+              only:
+                - dev
+                - stage
       - deploy:
           requires:
             - build
             - composer
-            - create_site
