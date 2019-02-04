@@ -3,16 +3,10 @@
   "type": "project",
   "license": "UNLICENSED",
   "require": {
-    "netflex/siteV3": "dev-master#v1.0.1",
-    "netflex/library": "dev-master"
+    "netflex/siteV3": "dev-master"
   },
   "repositories": [{
-      "type": "vcs",
-      "url": "git@github.com:apility/SiteV3.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@github.com:apility/PHP-Library.git"
-    }
-  ]
+    "type": "vcs",
+    "url": "git@github.com:apility/SiteV3.git"
+  }]
 }

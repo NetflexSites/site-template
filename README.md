@@ -1,30 +1,32 @@
 # Netflex Site Template
 
-This is a basic project skeleton for Netlfex based sites. It comes preconfigured with webpack for JS and SCSS compilation. It is set up with Bootstrap 4 and JQuery.
+This is a basic project skeleton for Netlfex based sites. It comes preconfigured with gulp for JS and SCSS compilation.
 
-Webpack will compile and autoprefix SCSS files, and compile ES6 JS files to be comaptible with all browsers from IE11 and up.
+Gulp will compile and autoprefix SCSS files, and compile ES6 JS files to be comaptible with for the browsers defined in the .browserlistrc file.
 
-Webpack also generates source maps automatically.
+**NOTICE**:
 
-#### Built assets will always have the name `bundle.js` and `bundle.scss`. This can be changed in the `webpack.config.js` file.
-
-#### If you do change this, please update your `.gitignore` to avoid getting the built assets commited into the repository.
+It is recommended that for new projects, that the compilation step is migrated to a tool like webpack. The gulp config is just there for legacy compatibility.
 
 # Paths
 
-* public/assets/js - Compiled JS files
-* public/assets/css - Compiled SCSS files
-* assets/sass - Source SCSS files
-* assets/js - Source JS files
-* config/watch.json - Deprecated. See webpack.config.js instead
-* vendor/ - Composer dependencies
+- public/assets/js - Compiled JS files
+- public/assets/css - Compiled SCSS files
+- assets/scss - Source SCSS files
+- assets/js - Source JS files
+- config/watch.json - The js/scss compilation config
+- vendor/ - Composer dependencies
+- node_modules/ - NPM packagres
 
 # Testing local
 
 Run `composer install` and `yarn` (or `npm install`) in the root of this project to set up the dev dependencies.
 
-Create a `.env` file with keys `NF_PUBLIC_KEY` and `NF_PRIVATE_KEY`
-If a `api.json` (deprecated) is detected in the config directory, it will automatically be upgraded to a `.env` file.
+Configre the config/api.json file with the sites credentials.
+
+**WARNING**:
+
+**This file should never be commited into source control**
 
 To compile assets:
 
@@ -32,11 +34,7 @@ To compile assets:
 
 To watch assets:
 
-`yarn dev` or `npm run dev`
-
-To run local test server:
-
-`vendor/bin/serve`
+`yarn watch` or `npm run watch`
 
 This will serve up the site locally at http://localhost:8080
 

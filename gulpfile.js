@@ -1,3 +1,7 @@
+// This file emulates the old SiteV3 watcher for compilation of SCSS and JS
+// It is recommended that for new sites, this is migrated to a tool like webpack.
+// To change this, just modify the "scripts.build" inside pacakge.json
+
 const fs = require('fs')
 const gulp = require('gulp')
 const path = require('path')
@@ -87,7 +91,9 @@ gulp.task('js', callback => {
     }
 
     let pipe = gulp.src(jsFiles)
-      .pipe(babel({ presets: ['@babel/env'] }))
+      .pipe(babel({
+        presets: ['@babel/env']
+      }))
       .pipe(concat(jsFilename))
 
     if (bundle.options.minify) {

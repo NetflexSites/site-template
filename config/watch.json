@@ -1,0 +1,16 @@
+{
+  "scss": {
+    "minimize": true,
+    "sourcemap": true,
+    "public/assets/css/styles.css": [
+      "assets/scss/styles.scss"
+    ]
+  },
+  "js": {
+    "minimize": true,
+    "sourcemap": true,
+    "public/assets/js/custom.js": [
+      "assets/js/custom.js"
+    ]
+  }
+}

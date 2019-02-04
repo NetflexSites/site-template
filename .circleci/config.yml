@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  netflex: netflex/netflex-deploy@1.0.12
+  netflex: netflex/netflex-deploy@1.0.18
 
 jobs:
   checkout:
@@ -25,17 +25,17 @@ jobs:
           command: echo 'export NODE_ENV="production"' >> $BASH_ENV
       - netflex/build
 
-  create_site:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - netflex/create_site
-
   deploy:
     docker:
       - image: circleci/node:latest
     steps:
       - netflex/deploy
+
+  deploy_prod:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - netflex/deploy_prod
 
 workflows:
   version: 2
@@ -55,15 +55,20 @@ workflows:
       - build:
           requires:
             - checkout
-      - create_site:
+      - deploy:
           requires:
-            - checkout
+            - build
+            - composer
           filters:
             branches:
               only:
                 - dev
                 - stage
-      - deploy:
+      - deploy_prod:
           requires:
             - build
             - composer
+          filters:
+            branches:
+              only:
+                - master
