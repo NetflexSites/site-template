@@ -6,7 +6,7 @@ orbs:
 jobs:
   checkout:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       - netflex/pull
 
@@ -18,7 +18,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       - run:
           name: "Set build env variable(s)"
@@ -27,13 +27,13 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       - netflex/deploy
 
   deploy_prod:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       - netflex/deploy_prod
 
